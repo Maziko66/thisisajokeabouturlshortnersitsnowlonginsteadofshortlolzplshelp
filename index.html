@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>url elongator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader" class="loader"><div class="spinner"></div></div>
+  <div class="container hidden">
+    <header>
+      <div class="logo"><span class="logo-url">url</span>elongator</div>
+      <div class="domain-subtitle">thisisajokeabouturlshortnersitsnowlonginsteadofshortlolzplshelp.com</div>
+    </header>
+
+    <main>
+      <section class="shorten-box">
+        <form id="shorten-form">
+          <div class="input-row">
+            <input
+              type="text"
+              id="url-input"
+              placeholder="paste your short url here"
+              autocomplete="off"
+            />
+            <button type="submit" id="shorten-btn">elongate</button>
+          </div>
+          <p id="error-msg" class="error hidden"></p>
+        </form>
+      </section>
+
+      <section id="result-box" class="result-box hidden">
+        <div class="result-label">your "long" url:</div>
+        <div class="result-url-row">
+          <a id="result-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+          <button id="copy-btn" class="copy-btn" title="copy to clipboard">copy</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://buymeacoffee.com/maziko" target="_blank" rel="noopener noreferrer" class="bmc-link">buy me a coffee</a>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast hidden">copied!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
