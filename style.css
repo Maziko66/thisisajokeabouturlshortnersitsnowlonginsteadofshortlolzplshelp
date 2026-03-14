@@ -118,6 +118,25 @@ header {
 
 #url-input::placeholder { color: var(--text-muted); }
 
+.length-picker {
+  display: flex;
+}
+
+.len-btn {
+  background: var(--surface2);
+  border: none;
+  border-radius: 0;
+  color: var(--text-muted);
+  padding: 0.75rem 0.75rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.len-btn:hover { color: var(--text); }
+.len-btn.active { background: var(--border); color: var(--text); }
+
 #shorten-btn {
   background: var(--accent);
   color: #fff;

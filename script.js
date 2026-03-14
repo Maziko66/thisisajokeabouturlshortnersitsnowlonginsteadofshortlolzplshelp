@@ -2,20 +2,20 @@ const DOMAIN = 'thisisajokeabouturlshortnersitsnowlonginsteadofshortlolzplshelp.
 
 // ── Encode / Decode ──────────────────────────────────────────────────────────
 
-function encodeUrl(url) {
+function encodeUrl(url, noiseLen) {
   const code = btoa(url)
     .replace(/\+/g, '-')
     .replace(/\//g, '_')
     .replace(/=/g, '');
-  return code + '.' + generateNoise(code);
+  return noiseLen > 0 ? code + '.' + generateNoise(code, noiseLen) : code;
 }
 
-function generateNoise(seed) {
+function generateNoise(seed, len) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = Math.imul(31, h) + seed.charCodeAt(i) | 0;
   let out = '';
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < len; i++) {
     h = Math.imul(h ^ (h >>> 13), 0x9e3779b9) | 0;
     out += chars[(h >>> 0) % chars.length];
   }
@@ -57,6 +57,17 @@ const resultBox  = document.getElementById('result-box');
 const resultLink = document.getElementById('result-link');
 const copyBtn    = document.getElementById('copy-btn');
 const toast      = document.getElementById('toast');
+const lenBtns    = document.querySelectorAll('.len-btn');
+
+let noiseLen = 0;
+
+lenBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    lenBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    noiseLen = parseInt(btn.dataset.len);
+  });
+});
 
 let toastTimer = null;
 
@@ -119,7 +130,7 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  const code = encodeUrl(url);
+  const code = encodeUrl(url, noiseLen);
   const longUrl = `${DOMAIN}/#${code}`;
 
   resultLink.textContent = longUrl;
