@@ -3,15 +3,29 @@ const DOMAIN = 'thisisajokeabouturlshortnersitsnowlonginsteadofshortlolzplshelp.
 // ── Encode / Decode ──────────────────────────────────────────────────────────
 
 function encodeUrl(url) {
-  return btoa(url)
+  const code = btoa(url)
     .replace(/\+/g, '-')
     .replace(/\//g, '_')
     .replace(/=/g, '');
+  return code + '.' + generateNoise(code);
+}
+
+function generateNoise(seed) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = Math.imul(31, h) + seed.charCodeAt(i) | 0;
+  let out = '';
+  for (let i = 0; i < 200; i++) {
+    h = Math.imul(h ^ (h >>> 13), 0x9e3779b9) | 0;
+    out += chars[(h >>> 0) % chars.length];
+  }
+  return out;
 }
 
 function decodeUrl(code) {
   try {
-    const padded = code + '='.repeat((4 - code.length % 4) % 4);
+    const actual = code.split('.')[0];
+    const padded = actual + '='.repeat((4 - actual.length % 4) % 4);
     return atob(padded.replace(/-/g, '+').replace(/_/g, '/'));
   } catch {
     return null;
