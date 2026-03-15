@@ -59,7 +59,7 @@ const copyBtn    = document.getElementById('copy-btn');
 const toast      = document.getElementById('toast');
 const lenBtns    = document.querySelectorAll('.len-btn');
 
-let noiseLen = 0;
+let noiseLen = 512;
 
 lenBtns.forEach(btn => {
   btn.addEventListener('click', () => {

@@ -24,13 +24,17 @@
               placeholder="paste your short url here"
               autocomplete="off"
             />
-            <div class="length-picker">
-              <button type="button" class="len-btn active" data-len="0">short</button>
-              <button type="button" class="len-btn" data-len="16">medium</button>
-              <button type="button" class="len-btn" data-len="128">long</button>
-              <button type="button" class="len-btn" data-len="512">loooooong</button>
-            </div>
             <button type="submit" id="shorten-btn">elongate</button>
+          </div>
+          <div class="length-picker">
+            <button type="button" class="len-btn" data-len="0">short</button>
+            <button type="button" class="len-btn" data-len="16">medium</button>
+            <button type="button" class="len-btn" data-len="128">long</button>
+            <button type="button" class="len-btn active" data-len="512">loooooong</button>
+            <button type="button" class="len-btn" data-len="1024">very loooooong</button>
+            <button type="button" class="len-btn" data-len="2048">longest</button>
+            <button type="button" class="len-btn" data-len="4096">very longest</button>
+            <button type="button" class="len-btn" data-len="8192">loooooongest</button>
           </div>
           <p id="error-msg" class="error hidden"></p>
         </form>

@@ -120,18 +120,22 @@ header {
 
 .length-picker {
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
 }
 
 .len-btn {
+  flex: 1;
   background: var(--surface2);
   border: none;
   border-radius: 0;
   color: var(--text-muted);
-  padding: 0.75rem 0.75rem;
-  font-size: 0.82rem;
+  padding: 0.5rem 0.4rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   white-space: nowrap;
+  text-align: center;
 }
 
 .len-btn:hover { color: var(--text); }

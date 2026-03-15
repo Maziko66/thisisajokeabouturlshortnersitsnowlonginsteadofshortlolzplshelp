@@ -17,7 +17,11 @@ the original url is base64-encoded and embedded in the hash of the elongated url
 | short | 0 (just the encoded url) |
 | medium | 16 |
 | long | 128 |
-| loooooong | 512 |
+| loooooong | 512 (default) |
+| very loooooong | 1024 |
+| longest | 2048 |
+| very longest | 4096 |
+| loooooongest | 8192 |
 
 ## deployment
 
